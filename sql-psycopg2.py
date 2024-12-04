@@ -1,11 +1,28 @@
 import psycopg2
 
+#_________________________SET-UP_________________________
 
 # connect to "chinook" database
 connection = psycopg2.connect(database="chinook")
 
-# build a cursor object of the database
+# build a cursor object of the database / to put inside the cursor object what we query from the dB
 cursor = connection.cursor()
+
+# fetch the results (multiple)
+results = cursor.fetchall ()
+
+# fetch the result (one)
+# results = cursor.fetchone ()
+
+#close the connection
+connection.close ()
+
+#print results
+for result in results:
+        print(result)
+
+#_________________________END SET-UP_________________________
+
 
 # Query 1 - select all records from the "Artist" table
 cursor.execute('SELECT * FROM "Artist"')
